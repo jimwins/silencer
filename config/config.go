@@ -32,9 +32,18 @@ type IPTables struct {
 type IPSet struct {
 	Set string `yaml:"set"`
 }
+
+type Cloudflare struct {
+	Account   string `yaml:"account"`
+	ListId    string `yaml:"list_id"`
+	AuthEmail string `yaml:"auth_email"`
+	AuthKey   string `yaml:"auth_key"`
+}
+
 type Filter struct {
-	IPTables *IPTables `yaml:"iptables,omitempty"`
-	IPSet    *IPSet    `yaml:"ipset,omitempty"`
+	IPTables   *IPTables   `yaml:"iptables,omitempty"`
+	IPSet      *IPSet      `yaml:"ipset,omitempty"`
+	Cloudflare *Cloudflare `yaml:"cloudflare,omitempty"`
 }
 
 type Config struct {
@@ -88,11 +97,6 @@ func Load() Config {
 		if len(subnet.Mask) != 4 {
 			log.Fatal("net mask length not equal 4")
 		}
-	}
-
-	if (config.Filter.IPSet != nil && config.Filter.IPTables != nil) ||
-		(config.Filter.IPSet == nil && config.Filter.IPTables == nil) {
-		log.Fatal("exactly one filter must be configured")
 	}
 
 	for i := range config.LogFile {

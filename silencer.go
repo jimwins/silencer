@@ -186,9 +186,20 @@ func main() {
 	case *debugRule != "":
 		blocker = filter.NewDummy()
 	case cfg.Filter.IPTables != nil:
+		if blocker != nil {
+			log.Fatal("exactly one filter must be configured")
+		}
 		blocker = filter.NewIPtables(cfg.Filter.IPTables.Chain)
 	case cfg.Filter.IPSet != nil:
+		if blocker != nil {
+			log.Fatal("exactly one filter must be configured")
+		}
 		blocker = filter.NewIPset(cfg.Filter.IPSet.Set)
+	case cfg.Filter.Cloudflare != nil:
+		if blocker != nil {
+			log.Fatal("exactly one filter must be configured")
+		}
+		blocker = filter.NewCloudflare(cfg.Filter.Cloudflare.Account, cfg.Filter.Cloudflare.ListId, cfg.Filter.Cloudflare.AuthEmail, cfg.Filter.Cloudflare.AuthKey)
 	default:
 		panic("not reached")
 	}
