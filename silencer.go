@@ -81,7 +81,7 @@ var debugRule = flag.String("debug-rule", "", "enable rule matching logs")
 
 func (rule *rule) match(line string) (ip net.IP, err error) {
 	if *debugRule != "" {
-		fmt.Printf("mathing rule %q\n", rule.name)
+		fmt.Printf("matching rule %q\n", rule.name)
 		defer func() {
 			switch {
 			case ip != nil:
