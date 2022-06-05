@@ -8,7 +8,7 @@ require (
 	github.com/creasty/defaults v1.5.1
 	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-yaml/yaml v2.1.0+incompatible
-	github.com/golang/mock v1.4.4
+	github.com/golang/mock v1.6.0
 	github.com/hpcloud/tail v1.0.0
 	github.com/stretchr/testify v1.7.1
 	github.com/xorcare/golden v0.7.0
