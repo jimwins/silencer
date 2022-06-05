@@ -7,7 +7,7 @@ After several hours of unsuccessful configuring of fail2ban I gave up and decide
 ## Running
 ```
 
-silencer [-config silencer.yaml] [-debug-rule] [-dry-run]
+silencer [-config silencer.yaml] [-debug-rule]
 
 ```
 
