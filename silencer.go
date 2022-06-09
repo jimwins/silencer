@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/hpcloud/tail"
+	"github.com/nxadm/tail"
 
 	"github.com/delamonpansie/silencer/config"
 	"github.com/delamonpansie/silencer/filter"
