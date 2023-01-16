@@ -40,10 +40,17 @@ type Cloudflare struct {
 	AuthKey   string `yaml:"auth_key"`
 }
 
+type Fastly struct {
+	ApiKey    string `yaml:"api_key"`
+	ServiceID string `yaml:"service_id"`
+	ACLID     string `yaml:"acl_id"`
+}
+
 type Filter struct {
 	IPTables   *IPTables   `yaml:"iptables,omitempty"`
 	IPSet      *IPSet      `yaml:"ipset,omitempty"`
 	Cloudflare *Cloudflare `yaml:"cloudflare,omitempty"`
+	Fastly     *Fastly     `yaml:"fastly,omitempty"`
 }
 
 type Config struct {

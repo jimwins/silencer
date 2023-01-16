@@ -200,6 +200,11 @@ func main() {
 			log.Fatal("exactly one filter must be configured")
 		}
 		blocker = filter.NewCloudflare(cfg.Filter.Cloudflare.Account, cfg.Filter.Cloudflare.ListId, cfg.Filter.Cloudflare.AuthEmail, cfg.Filter.Cloudflare.AuthKey)
+	case cfg.Filter.Fastly != nil:
+		if blocker != nil {
+			log.Fatal("exactly one filter must be configured")
+		}
+		blocker = filter.NewFastly(cfg.Filter.Fastly.ApiKey, cfg.Filter.Fastly.ServiceID, cfg.Filter.Fastly.ACLID)
 	default:
 		panic("not reached")
 	}
